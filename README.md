@@ -1,16 +1,15 @@
-# **Admin**LTE - MVC Core 1.0
+# **Admin**LTE - MVC Core 1.1
 This template is based from AdminLTE of http://almsaeedstudio.com.
 Converted as a .net project.
 
 ## Prerequisites
 as a minimum, you should have the following installed
-* Visual Studio 2015
-* Visual Studio Update 3
+* Visual Studio 2017
 * install `Git`
 * install `NodeJS`
 * install `Bower`
 
-_built using .NET Core 1.0 & .NET Core Tools Preview 2_
+_built using .NET Core 1.1
 
 ## Installation
 Just clone or fork this. Whatever you want. Run the solution.
