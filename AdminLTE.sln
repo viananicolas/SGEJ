@@ -1,16 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1C081B9B-F9DB-41BE-951D-F4F059C7A702}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4F9313DE-B867-4BB7-9A48-CD6FC2357FD0}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AdminLTE", "src\AdminLTE\AdminLTE.xproj", "{B969ED6B-FCBC-4EB1-B2BD-44632E0DA331}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminLTE", "src\AdminLTE\AdminLTE.csproj", "{B969ED6B-FCBC-4EB1-B2BD-44632E0DA331}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

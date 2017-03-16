@@ -74,6 +74,7 @@ $.extend(true, $.fn.dataTable.defaults, {
 });
 
 /* automatically defaults all submit button to be disabled */
+/*
 function useSubmitClass() {
     $("button[type=submit]").on('click', function (e) {
         //var button = $("button[type=submit]");
@@ -84,4 +85,4 @@ function useSubmitClass() {
     $('form').bind('invalid-form.validate', function () {
         $(this).find($('button[type=submit]')).prop("disabled", false).find($('i')).remove()
     });
-}
+}//*/
