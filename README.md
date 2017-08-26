@@ -1,4 +1,4 @@
-# **Admin**LTE - MVC Core 1.1
+# **Admin**LTE - MVC Core 2
 This template is based from AdminLTE of http://almsaeedstudio.com.
 Converted as a .net project.
 
@@ -9,7 +9,7 @@ as a minimum, you should have the following installed
 * install `NodeJS`
 * install `Bower`
 
-_built using .NET Core 1.1
+_built using .NET Core 2
 
 ## Installation
 Just clone or fork this. Whatever you want. Run the solution.
