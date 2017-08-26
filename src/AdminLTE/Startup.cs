@@ -1,19 +1,17 @@
-﻿using System.Diagnostics;
+﻿using AdminLTE.Data;
+using AdminLTE.Models;
+using AdminLTE.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using AdminLTE.Data;
-using AdminLTE.Models;
-using AdminLTE.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using System;
 
 namespace AdminLTE
 {
@@ -90,7 +88,7 @@ namespace AdminLTE
             app.UseStatusCodePagesWithRedirects("~/Home/Error/{0}");
 
             app.UseStaticFiles();
-            app.UseIdentity();
+            app.UseAuthentication();
 
             //Add middleware here
             app.UseMiddleware<RequestLoggingMiddleware>();

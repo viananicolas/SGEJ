@@ -132,7 +132,7 @@ namespace AdminLTE.Controllers
                 //var rootPath = Path.GetDirectoryName(AppContext.BaseDirectory);
                 //var fullPath = Path.Combine(rootPath, srcFilePath);
                 //string filePath = new Uri(fullPath).LocalPath;
-                StreamReader sr = new StreamReader(new FileStream(@"C:\Users\VhaL\Documents\Visual Studio 2015\Projects\AdminLTE\src\AdminLTE\wwwroot\files\SalesOrderDetail.txt", FileMode.Open, FileAccess.Read));
+                StreamReader sr = new StreamReader(new FileStream(@"wwwroot\files\SalesOrderDetail.txt", FileMode.Open, FileAccess.Read));
 
                 // Read file.
                 while ((line = sr.ReadLine()) != null)

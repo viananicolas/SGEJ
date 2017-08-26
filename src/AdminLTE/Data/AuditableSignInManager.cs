@@ -19,7 +19,7 @@ namespace AdminLTE.Data
         private readonly IHttpContextAccessor _contextAccessor;
 
         public AuditableSignInManager(UserManager<TUser> userManager, IHttpContextAccessor contextAccessor, IUserClaimsPrincipalFactory<TUser> claimsFactory, IOptions<IdentityOptions> optionsAccessor, ILogger<SignInManager<TUser>> logger, ApplicationDbContext dbContext)
-            : base(userManager, contextAccessor, claimsFactory, optionsAccessor, logger)
+            : base(userManager, contextAccessor, claimsFactory, optionsAccessor, logger, null)
         {
             if (userManager == null)
                 throw new ArgumentNullException(nameof(userManager));
