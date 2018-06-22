@@ -1,7 +1,10 @@
 ﻿@using System.Collections.Generic
 @using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Http.Authentication
-@model LoginViewModel
+@using SGEJ.Models
+@using SGEJ.Models.Entities
+@using SGEJ.Models.Models.AccountViewModels
+@model SGEJ.Models.Models.AccountViewModels.LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 
 @{
@@ -15,7 +18,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Login</title>
+    <title>SGEJ | Login</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -44,8 +47,8 @@
                 <div class="form-wrap">
                     <div class="row">
                         <div class="title animated fadeInDown">
-                            <h1>AdminLTE</h1>
-                            <h5>Use a local account to log in</h5>
+                            <h1>SGEJ</h1>
+                            <h5>Sistema de Gerenciamento de Empréstimo de Jogos</h5>
                         </div>
 
                         <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
@@ -61,12 +64,12 @@
                                         <input asp-for="Email" type="text" placeholder="Email" class="form-control" />
                                         @*<span asp-validation-for="Email" class="text-danger"></span>*@
                                         @*<label asp-for="Password" class="col-md-2 control-label"></label>*@
-                                        <input asp-for="Password" placeholder="Password" class="form-control" />
+                                        <input asp-for="Password" placeholder="Senha" class="form-control" />
                                         @*<span asp-validation-for="Password" class="text-danger"></span>*@
                                     </div>
 
                                     <div class="form-group">
-                                        <button class="btn btn-block signin" type="submit">Sign in</button>
+                                        <button class="btn btn-block signin" type="submit">Entrar</button>
 
                                         <div>
                                             <div class="checkbox">
@@ -82,11 +85,11 @@
                                     <div class="row">
                                         <div class="col-xs-7">
                                             <i class="fa fa-unlock-alt"></i>
-                                            <a asp-action="ForgotPassword">Forgot your password?</a>
+                                            <a asp-action="ForgotPassword">Esqueceu sua senha?</a>
                                         </div>
                                         <div class="col-xs-5">
                                             <i class="fa fa-check"></i>
-                                            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Sign Up</a>
+                                            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Registrar-se</a>
                                         </div>
                                     </div>
                                 </div>

@@ -15,19 +15,11 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <!-- Messages: style can be found in dropdown.less-->
-                @await Component.InvokeAsync("MenuMessage")
-                <!-- /.messages-menu -->
-                <!-- Notifications Menu -->
+                @*@await Component.InvokeAsync("MenuMessage")
                 @await Component.InvokeAsync("MenuNotification")
-                <!-- Tasks Menu -->
-                @await Component.InvokeAsync("MenuTask")
-                <!-- User Account Menu -->
+                @await Component.InvokeAsync("MenuTask")*@
                 @await Component.InvokeAsync("MenuUser")
-                <!-- Control Sidebar Toggle Button -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-question-circle"></i></a>
-                </li>
+
             </ul>
         </div>
     </nav>

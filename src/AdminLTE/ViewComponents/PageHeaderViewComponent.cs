@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 
-namespace AdminLTE.ViewComponents
+namespace SGEJ.ViewComponents
 {
     public class PageHeaderViewComponent : ViewComponent
     {

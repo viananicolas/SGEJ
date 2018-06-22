@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using AdminLTE.Common;
-using AdminLTE.Models;
-using System.Security.Claims;
-using AdminLTE.Common.Extensions;
-using System;
+using SGEJ.Models;
+using SGEJ.Models.Common;
+using SGEJ.Models.Models;
 
-namespace AdminLTE.ViewComponents
+namespace SGEJ.ViewComponents
 {
     public class SidebarViewComponent : ViewComponent
     {

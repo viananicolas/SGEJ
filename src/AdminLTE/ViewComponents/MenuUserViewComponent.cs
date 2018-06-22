@@ -1,8 +1,6 @@
-﻿using AdminLTE.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AdminLTE.ViewComponents
+namespace SGEJ.ViewComponents
 {
     public class MenuUserViewComponent : ViewComponent
     {

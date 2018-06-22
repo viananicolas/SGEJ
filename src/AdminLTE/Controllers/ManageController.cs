@@ -4,11 +4,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using AdminLTE.Models;
-using AdminLTE.Models.ManageViewModels;
-using AdminLTE.Services;
+using SGEJ.Models;
+using SGEJ.Models.Entities;
+using SGEJ.Models.Models.ManageViewModels;
+using SGEJ.Services;
 
-namespace AdminLTE.Controllers
+namespace SGEJ.Controllers
 {
     [Authorize]
     public class ManageController : Controller

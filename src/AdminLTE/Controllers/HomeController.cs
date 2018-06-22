@@ -1,14 +1,13 @@
-﻿using AdminLTE.Common.Attributes;
-using AdminLTE.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
+using Microsoft.AspNetCore.Mvc;
+using SGEJ.Models;
+using SGEJ.Models.Common.Attributes;
+using SGEJ.Models.Models;
 
-namespace AdminLTE.Controllers
+namespace SGEJ.Controllers
 {
     public class HomeController : BaseController
     {

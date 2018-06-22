@@ -1,13 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using AdminLTE.Models;
-using System.Runtime.CompilerServices;
+using SGEJ.Models;
+using SGEJ.Models.Models;
 
-namespace AdminLTE.Controllers
+namespace SGEJ.Controllers
 {
     public class BaseController : Controller
     {

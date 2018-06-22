@@ -1,9 +1,9 @@
-﻿using AdminLTE.Models;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+using SGEJ.Models;
+using SGEJ.Models.Models;
 
-namespace AdminLTE.ViewComponents
+namespace SGEJ.ViewComponents
 {
     public class PageAlertViewComponent : ViewComponent
     {

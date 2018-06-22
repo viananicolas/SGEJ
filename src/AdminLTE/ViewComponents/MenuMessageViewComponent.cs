@@ -1,10 +1,12 @@
-﻿using AdminLTE.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
-using AdminLTE.Common.Extensions;
-using AdminLTE.Common;
-namespace AdminLTE.ViewComponents
+using Microsoft.AspNetCore.Mvc;
+using SGEJ.Models;
+using SGEJ.Models.Common;
+using SGEJ.Models.Common.Extensions;
+using SGEJ.Models.Models;
+
+namespace SGEJ.ViewComponents
 {
     public class MenuMessageViewComponent : ViewComponent
     {

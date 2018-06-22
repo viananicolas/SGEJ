@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AdminLTE.ViewComponents
+namespace SGEJ.ViewComponents
 {
     public class HeaderViewComponent : ViewComponent
     {

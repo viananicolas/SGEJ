@@ -1,7 +1,4 @@
-﻿using AdminLTE.Data;
-using AdminLTE.Models;
-using AdminLTE.Services;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,8 +9,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SGEJ.Models;
+using SGEJ.Models.Context;
+using SGEJ.Models.Entities;
+using SGEJ.Services;
 
-namespace AdminLTE
+namespace SGEJ
 {
     public class Startup
     {

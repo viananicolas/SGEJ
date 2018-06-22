@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
+using Microsoft.AspNetCore.Mvc;
 
-namespace AdminLTE.ViewComponents
+namespace SGEJ.ViewComponents
 {
     public class ControlSidebarViewComponent : ViewComponent
     {

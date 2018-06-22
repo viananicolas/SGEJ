@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Globalization;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -6,13 +8,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using AdminLTE.Models;
-using AdminLTE.Models.AccountViewModels;
-using AdminLTE.Services;
-using AdminLTE.Common;
-using System;
+using SGEJ.Models;
+using SGEJ.Models.Common;
+using SGEJ.Models.Entities;
+using SGEJ.Models.Models.AccountViewModels;
+using SGEJ.Services;
 
-namespace AdminLTE.Controllers
+namespace SGEJ.Controllers
 {
     [Authorize]
     public class AccountController : Controller
@@ -64,7 +66,7 @@ namespace AdminLTE.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "Home");
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -110,13 +112,12 @@ namespace AdminLTE.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    //extended properties
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    AvatarURL = "/images/user.png",
-                    DateRegistered = DateTime.UtcNow.ToString(),
-                    Position = "",
-                    NickName = "",
+                    AvatarURL = "https://s2it.com.br/site/wp-content/themes/s2it/images/logoS2it.png",
+                    DateRegistered = DateTime.UtcNow.ToString(CultureInfo.CurrentCulture),
+                    Position = "Owner",
+                    NickName = $"{model.FirstName.ToLower()}{model.LastName.ToLower()}",
                    
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
