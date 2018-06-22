@@ -1,0 +1,24 @@
+﻿@model SGEJ.Models.Entities.Amigo
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">Detalhes</h3>
+            </div>
+            <div class="box-content padded">
+                <table class="table table-bordered table-striped responsive">
+                    @{await Html.RenderPartialAsync("Partial/_Detail", Model);}
+                </table>
+            </div>
+            <div class="box-footer">
+                <a asp-action="Index" class="btn btn-primary"> Voltar </a>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success" style="background-color: #016ef7; border-color: #016ef7;">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>

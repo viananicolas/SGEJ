@@ -1,0 +1,26 @@
+﻿@model SGEJ.Models.Entities.Amigo
+
+<div class="box box-danger">
+    <div class="box-header">
+        <i class="fa fa-trash-o"></i>
+        <h3 class="box-title">Excluir</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="callout callout-info">
+            <h4>Atenção</h4>
+            <p>Deseja realmente excluir este registro?</p>
+            <form asp-action="Delete">
+                <button class="btn btn-primary" style="background-color: #016ef7; border-color: #016ef7;">Sim</button>
+                <a asp-action="Index" class="btn btn-primary">Não</a>
+            </form>
+
+        </div>
+        <div class="box-content padded">
+            <table class="table table-bordered table-striped responsive">
+                @{await Html.RenderPartialAsync("Partial/_Detail", Model);}
+            </table>
+        </div>
+    </div>
+
+</div>

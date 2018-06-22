@@ -1,0 +1,21 @@
+﻿@model SGEJ.Models.Entities.Amigo
+<table class="table table-bordered table-striped responsive">
+    <tbody>
+        <tr>
+            <td style="width: 200px;">@Html.DisplayNameFor(model => model.Id)</td>
+            <td>@Html.DisplayFor(model => model.Id)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Nome)</td>
+            <td>@Html.DisplayFor(model => model.Nome)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Celular)</td>
+            <td>@Html.DisplayFor(model => model.Celular)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.DataCadastro)</td>
+            <td>@Html.Raw(Model.DataCadastro.ToString("dd/MM/yyyy HH:mm:ss"))</td>
+        </tr>
+    </tbody>
+</table>
