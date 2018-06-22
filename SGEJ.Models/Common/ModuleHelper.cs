@@ -16,6 +16,9 @@ namespace SGEJ.Models.Common
             Error,
             Login,
             Register,
+            Jogos,
+            Amigos,
+            Emprestimos
         }
 
         public static SidebarMenu AddHeader(string name)
@@ -23,7 +26,7 @@ namespace SGEJ.Models.Common
             return new SidebarMenu
             {
                 Type = SidebarMenuType.Header,
-                Name = name,
+                Name = name
             };
         }
 
@@ -35,7 +38,7 @@ namespace SGEJ.Models.Common
                 IsActive = false,
                 Name = name,
                 IconClassName = iconClassName,
-                URLPath = "#",
+                URLPath = "#"
             };
         }
 
@@ -53,7 +56,7 @@ namespace SGEJ.Models.Common
                         Name = "Home",
                         IconClassName = "fa fa-link",
                         URLPath = "/",
-                        LinkCounter = counter,
+                        LinkCounter = counter
                     };
                 case Module.Login:
                     return new SidebarMenu
@@ -62,7 +65,7 @@ namespace SGEJ.Models.Common
                         Name = "Login",
                         IconClassName = "fa fa-sign-in",
                         URLPath = "/Account/Login",
-                        LinkCounter = counter,
+                        LinkCounter = counter
                     };
                 case Module.Register:
                     return new SidebarMenu
@@ -71,7 +74,7 @@ namespace SGEJ.Models.Common
                         Name = "Register",
                         IconClassName = "fa fa-user-plus",
                         URLPath = "/Account/Register",
-                        LinkCounter = counter,
+                        LinkCounter = counter
                     };
                 case Module.About:
                     return new SidebarMenu
@@ -80,7 +83,7 @@ namespace SGEJ.Models.Common
                         Name = "About",
                         IconClassName = "fa fa-group",
                         URLPath = "/Home/About",
-                        LinkCounter = counter,
+                        LinkCounter = counter
                     };
                 case Module.Contact:
                     return new SidebarMenu
@@ -89,7 +92,7 @@ namespace SGEJ.Models.Common
                         Name = "Contact",
                         IconClassName = "fa fa-phone",
                         URLPath = "/Home/Contact",
-                        LinkCounter = counter,
+                        LinkCounter = counter
                     };
                 case Module.Error:
                     return new SidebarMenu
@@ -98,7 +101,34 @@ namespace SGEJ.Models.Common
                         Name = "Error",
                         IconClassName = "fa fa-warning",
                         URLPath = "/Home/Error",
-                        LinkCounter = counter,
+                        LinkCounter = counter
+                    };
+                case Module.Jogos:
+                    return new SidebarMenu
+                    {
+                        Type = SidebarMenuType.Link,
+                        Name = "Jogos",
+                        IconClassName = "fa fa-gamepad",
+                        URLPath = "/Jogos/Index",
+                        LinkCounter = counter
+                    };
+                case Module.Amigos:
+                    return new SidebarMenu
+                    {
+                        Type = SidebarMenuType.Link,
+                        Name = "Amigos",
+                        IconClassName = "fa fa-users",
+                        URLPath = "/Amigos/Index",
+                        LinkCounter = counter
+                    };
+                case Module.Emprestimos:
+                    return new SidebarMenu
+                    {
+                        Type = SidebarMenuType.Link,
+                        Name = "Emprestimos",
+                        IconClassName = "fa fa-share-square-o",
+                        URLPath = "/Emprestimos/Index",
+                        LinkCounter = counter
                     };
 
                 default:

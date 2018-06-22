@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SGEJ.Models;
 using SGEJ.Models.Entities;
 using SGEJ.Models.Models.ManageViewModels;
 using SGEJ.Services;
@@ -109,7 +108,7 @@ namespace SGEJ.Controllers
             }
             var code = await _userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
             await _smsSender.SendSmsAsync(model.PhoneNumber, "Your security code is: " + code);
-            return RedirectToAction(nameof(VerifyPhoneNumber), new { PhoneNumber = model.PhoneNumber });
+            return RedirectToAction(nameof(VerifyPhoneNumber), new {model.PhoneNumber });
         }
 
         //

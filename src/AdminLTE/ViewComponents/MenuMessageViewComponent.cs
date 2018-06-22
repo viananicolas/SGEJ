@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
-using SGEJ.Models;
 using SGEJ.Models.Common;
 using SGEJ.Models.Common.Extensions;
 using SGEJ.Models.Models;
@@ -10,11 +9,6 @@ namespace SGEJ.ViewComponents
 {
     public class MenuMessageViewComponent : ViewComponent
     {
-
-        public MenuMessageViewComponent()
-        {
-        }
-
         public IViewComponentResult Invoke(string filter)
         {
             var messages = GetData();
@@ -33,7 +27,7 @@ namespace SGEJ.ViewComponents
                 AvatarURL = "/images/user.png",
                 ShortDesc = "Why not buy a new awesome theme?",
                 TimeSpan = "5 mins",
-                URLPath = "#",
+                URLPath = "#"
             });
 
             messages.Add(new Message
@@ -44,7 +38,7 @@ namespace SGEJ.ViewComponents
                 AvatarURL = "/images/user.png",
                 ShortDesc = "For approval",
                 TimeSpan = "15 mins",
-                URLPath = "#",
+                URLPath = "#"
             });
 
             return messages;

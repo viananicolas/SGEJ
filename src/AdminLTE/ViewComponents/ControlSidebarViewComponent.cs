@@ -7,11 +7,6 @@ namespace SGEJ.ViewComponents
 {
     public class ControlSidebarViewComponent : ViewComponent
     {
-
-        public ControlSidebarViewComponent()
-        {
-        }
-
         public IViewComponentResult Invoke(string filter)
         {
             if (string.IsNullOrEmpty(ViewBag.PageHelpFileName))

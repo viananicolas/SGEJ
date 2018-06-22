@@ -1,17 +1,11 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using SGEJ.Models;
 using SGEJ.Models.Models;
 
 namespace SGEJ.ViewComponents
 {
     public class MenuTaskViewComponent : ViewComponent
     {
-
-        public MenuTaskViewComponent()
-        {
-        }
-
         public IViewComponentResult Invoke(string filter)
         {
             var messages = GetData();
@@ -26,7 +20,7 @@ namespace SGEJ.ViewComponents
                 Id = 1,
                 ShortDesc = "Design some buttons",
                 URLPath = "#",
-                Percentage = 20,
+                Percentage = 20
             });
 
             return messages;

@@ -5,11 +5,6 @@ namespace SGEJ.ViewComponents
 {
     public class PageHeaderViewComponent : ViewComponent
     {
-
-        public PageHeaderViewComponent()
-        {
-        }
-
         public IViewComponentResult Invoke(string filter)
         {
             Tuple<string, string> message;

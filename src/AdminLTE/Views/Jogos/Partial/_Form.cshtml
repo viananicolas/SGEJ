@@ -1,0 +1,34 @@
+﻿@model SGEJ.Models.Entities.Jogo
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Dados</h3>
+    </div>
+    @if (ViewContext.RouteData.Values["action"].ToString() == "Edit")
+    {
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.DataCadastro)
+        @Html.HiddenFor(model => model.Excluido)
+    }
+    <div class="box-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <label asp-for="NomeJogo" class="control-label"></label>
+                <input asp-for="NomeJogo" class="form-control" />
+                <span asp-validation-for="NomeJogo" class="text-danger"></span>
+            </div>
+        </div>        
+        <div class="form-group">
+            <div class="col-md-6">
+                <label asp-for="AnoLancamento" class="control-label"></label>
+                <input asp-for="AnoLancamento" class="form-control" />
+                <span asp-validation-for="AnoLancamento" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-footer clearfix no-border">
+    <buton class="btn btn-primary" style="background-color: #016ef7; border-color: #016ef7;" onclick="window.history.back();">Voltar</buton>
+    <input type="submit" value="Salvar" class="btn btn-primary"/>
+
+</div>

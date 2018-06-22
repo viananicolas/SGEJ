@@ -1,17 +1,11 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using SGEJ.Models;
 using SGEJ.Models.Models;
 
 namespace SGEJ.ViewComponents
 {
     public class MenuNotificationViewComponent : ViewComponent
     {
-
-        public MenuNotificationViewComponent()
-        {
-        }
-
         public IViewComponentResult Invoke(string filter)
         {
             var messages = GetData();
@@ -26,7 +20,7 @@ namespace SGEJ.ViewComponents
                 Id = 1,
                 FontAwesomeIcon = "fa fa-users text-aqua",
                 ShortDesc = "5 new members joined today",
-                URLPath = "#",
+                URLPath = "#"
             });
 
             return messages;

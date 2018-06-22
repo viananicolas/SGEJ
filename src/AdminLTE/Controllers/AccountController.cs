@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using SGEJ.Models;
 using SGEJ.Models.Common;
 using SGEJ.Models.Entities;
 using SGEJ.Models.Models.AccountViewModels;
@@ -70,18 +69,16 @@ namespace SGEJ.Controllers
                 }
                 if (result.RequiresTwoFactor)
                 {
-                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, model.RememberMe });
                 }
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning(2, "User account locked out.");
                     return View("Lockout");
                 }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return View(model);
-                }
+
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return View(model);
             }
 
             // If we got this far, something failed, redisplay form
@@ -117,7 +114,7 @@ namespace SGEJ.Controllers
                     AvatarURL = "https://s2it.com.br/site/wp-content/themes/s2it/images/logoS2it.png",
                     DateRegistered = DateTime.UtcNow.ToString(CultureInfo.CurrentCulture),
                     Position = "Owner",
-                    NickName = $"{model.FirstName.ToLower()}{model.LastName.ToLower()}",
+                    NickName = $"{model.FirstName.ToLower()}{model.LastName.ToLower()}"
                    
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
@@ -201,14 +198,12 @@ namespace SGEJ.Controllers
             {
                 return View("Lockout");
             }
-            else
-            {
-                // If the user does not have an account, then ask the user to create an account.
-                ViewData["ReturnUrl"] = returnUrl;
-                ViewData["LoginProvider"] = info.LoginProvider;
-                var email = info.Principal.FindFirstValue(ClaimTypes.Email);
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = email });
-            }
+
+            // If the user does not have an account, then ask the user to create an account.
+            ViewData["ReturnUrl"] = returnUrl;
+            ViewData["LoginProvider"] = info.LoginProvider;
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = email });
         }
 
         //
@@ -334,12 +329,12 @@ namespace SGEJ.Controllers
             if (user == null)
             {
                 // Don't reveal that the user does not exist
-                return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
+                return RedirectToAction(nameof(ResetPasswordConfirmation), "Account");
             }
             var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
+                return RedirectToAction(nameof(ResetPasswordConfirmation), "Account");
             }
             AddErrors(result);
             return View();
@@ -405,7 +400,7 @@ namespace SGEJ.Controllers
                 await _smsSender.SendSmsAsync(await _userManager.GetPhoneNumberAsync(user), message);
             }
 
-            return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
 
         //
@@ -448,11 +443,9 @@ namespace SGEJ.Controllers
                 _logger.LogWarning(7, "User account locked out.");
                 return View("Lockout");
             }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Invalid code.");
-                return View(model);
-            }
+
+            ModelState.AddModelError(string.Empty, "Invalid code.");
+            return View(model);
         }
 
         #region Helpers
@@ -476,10 +469,8 @@ namespace SGEJ.Controllers
             {
                 return Redirect(returnUrl);
             }
-            else
-            {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
-            }
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
         #endregion

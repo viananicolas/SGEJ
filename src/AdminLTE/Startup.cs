@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using SGEJ.Models;
 using SGEJ.Models.Context;
+using SGEJ.Models.DependencyInjection;
 using SGEJ.Models.Entities;
 using SGEJ.Services;
 
@@ -42,7 +42,7 @@ namespace SGEJ
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))).AddUnitOfWork<ApplicationDbContext>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

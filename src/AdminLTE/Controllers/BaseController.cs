@@ -1,13 +1,22 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using SGEJ.Models;
+using SGEJ.Models.Interface;
 using SGEJ.Models.Models;
 
 namespace SGEJ.Controllers
 {
     public class BaseController : Controller
     {
+        public IUnitOfWork UnitOfWork;
+        public BaseController(IUnitOfWork unitOfWork)
+        {
+            UnitOfWork = unitOfWork;
+        }
+
+        public BaseController()
+        {
+        }
         internal void AddBreadcrumb(string displayName, string urlPath)
         {
             List<Message> messages;

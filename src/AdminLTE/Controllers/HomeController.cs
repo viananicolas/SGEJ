@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using SGEJ.Models;
 using SGEJ.Models.Common.Attributes;
 using SGEJ.Models.Models;
 
@@ -68,7 +67,7 @@ namespace SGEJ.Controllers
                 int pageSize = Convert.ToInt32(Request.Form["length"][0]);
 
                 // Loading.
-                List<SalesOrderDetail> data = this.LoadData();
+                List<SalesOrderDetail> data = LoadData();
 
                 // Total record count.
                 int totalRecords = data.Count;
@@ -88,7 +87,7 @@ namespace SGEJ.Controllers
                 }
 
                 // Sorting.
-                data = this.SortByColumnWithOrder(order, orderDir, data);
+                data = SortByColumnWithOrder(order, orderDir, data);
 
                 // Filter record count.
                 int recFilter = data.Count;
@@ -97,7 +96,7 @@ namespace SGEJ.Controllers
                 data = data.Skip(startRec).Take(pageSize).ToList();
 
                 // Loading drop down lists.
-                var result = this.Json(new { draw = Convert.ToInt32(draw), recordsTotal = totalRecords, recordsFiltered = recFilter, data = data });
+                var result = Json(new { draw = Convert.ToInt32(draw), recordsTotal = totalRecords, recordsFiltered = recFilter, data });
                 return result;
             }
             catch (Exception ex)
@@ -141,13 +140,13 @@ namespace SGEJ.Controllers
                     string[] info = line.Split(',');
 
                     // Setting.
-                    infoObj.sr = Convert.ToInt32(info[0].ToString());
-                    infoObj.ordertracknumber = info[1].ToString();
-                    infoObj.quantity = Convert.ToInt32(info[2].ToString());
-                    infoObj.productname = info[3].ToString();
-                    infoObj.specialoffer = info[4].ToString();
-                    infoObj.unitprice = Convert.ToDouble(info[5].ToString());
-                    infoObj.unitpricediscount = Convert.ToDouble(info[6].ToString());
+                    infoObj.sr = Convert.ToInt32(info[0]);
+                    infoObj.ordertracknumber = info[1];
+                    infoObj.quantity = Convert.ToInt32(info[2]);
+                    infoObj.productname = info[3];
+                    infoObj.specialoffer = info[4];
+                    infoObj.unitprice = Convert.ToDouble(info[5]);
+                    infoObj.unitpricediscount = Convert.ToDouble(info[6]);
 
                     // Adding.
                     lst.Add(infoObj);

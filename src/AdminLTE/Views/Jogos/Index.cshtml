@@ -1,0 +1,78 @@
+﻿@model IEnumerable<SGEJ.Models.Entities.Jogo>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <form>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Novo jogo </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="box-body">
+                <table id="Galeria" class="table-striped table table-hover">
+                    @if (Model.Any())
+                    {
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.NomeJogo)
+                                </th>                                
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AnoLancamento)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DataCadastro)
+                                </th>
+                                <th class="text-right">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr data-id="@item.Id">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NomeJogo)
+                                    </td>                                    
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AnoLancamento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataCadastro)
+                                    </td>
+                                    <td class="text-right">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-default"><i class="fa fa-search"></i></a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-default"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                Nenhum jogo encontrado.
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function() {
+            $('#Galeria').DataTable({
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json'
+                }
+            });
+        });
+    </script>
+}

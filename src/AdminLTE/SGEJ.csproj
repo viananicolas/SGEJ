@@ -9,6 +9,10 @@
     <UserSecretsId>aspnet-AdminLTE-c9131f1e-93fb-4772-8c8b-1d4c77bf4354</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Update="wwwroot\**\*;Views\**\*;Areas\**\Views">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -63,6 +67,7 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Views\Jogos\Partial\" />
   </ItemGroup>
 
 </Project>

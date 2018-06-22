@@ -26,7 +26,7 @@ namespace SGEJ.Models.Context
                 new Claim(CustomClaimTypes.AvatarURL, user.AvatarURL),
                 new Claim(CustomClaimTypes.Position, user.Position),
                 new Claim(CustomClaimTypes.NickName, user.NickName),
-                new Claim(CustomClaimTypes.DateRegistered, user.DateRegistered),
+                new Claim(CustomClaimTypes.DateRegistered, user.DateRegistered)
             });
 
             return principal;

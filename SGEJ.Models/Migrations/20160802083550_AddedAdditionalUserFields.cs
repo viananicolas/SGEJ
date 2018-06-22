@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SGEJ.Models.Context.Migrations
+namespace SGEJ.Models.Migrations
 {
     public partial class AddedAdditionalUserFields : Migration
     {

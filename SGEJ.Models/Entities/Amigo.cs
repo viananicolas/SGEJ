@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SGEJ.Models.Entities
+﻿namespace SGEJ.Models.Entities
 {
     public class Amigo : Base
     {
