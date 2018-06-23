@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SGEJ.Models.Interface;
 using SGEJ.Models.Models;
 
 namespace SGEJ.Controllers
 {
+    [Authorize]
     public class BaseController : Controller
     {
         public IUnitOfWork UnitOfWork;

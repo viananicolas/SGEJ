@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SGEJ.Extensions;
 using SGEJ.Models.Context;
 using SGEJ.Models.Entities;
+using SGEJ.Models.Enums;
 using SGEJ.Models.Interface;
 
 namespace SGEJ.Controllers
@@ -17,7 +19,16 @@ namespace SGEJ.Controllers
         public JogosController(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
-
+        //private void InicializaViewData(Jogo jogo = null)
+        //{
+        //    ViewData["Plataforma"] = Enum.GetValues(typeof(Plataforma))
+        //        .Cast<Enum>()
+        //        .Select(item => new SelectListItem
+        //        {
+        //            Value = ((int)(object)item).ToString(),
+        //            Text = EnumHelper<Plataforma>.GetDisplayValue((Plataforma)item)
+        //        }).ToList();
+        //}
         // GET: Jogos
         public async Task<IActionResult> Index()
         {
@@ -52,7 +63,7 @@ namespace SGEJ.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NomeJogo,AnoLancamento,Id,DataCadastro,Excluido")] Jogo jogo)
+        public async Task<IActionResult> Create([Bind("NomeJogo,AnoLancamento,Id,DataCadastro,Excluido,Plataforma,Desenvolvedora,Distribuidora")] Jogo jogo)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +96,7 @@ namespace SGEJ.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NomeJogo,AnoLancamento,Id,DataCadastro,Excluido")] Jogo jogo)
+        public async Task<IActionResult> Edit(int id, [Bind("NomeJogo,AnoLancamento,Id,DataCadastro,Excluido,Plataforma,Desenvolvedora,Distribuidora")] Jogo jogo)
         {
             if (id != jogo.Id)
             {

@@ -1,0 +1,152 @@
+﻿@model IEnumerable<SGEJ.Models.Entities.Emprestimo>
+<form>
+    @Html.AntiForgeryToken()
+</form>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <form>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Novo empréstimo </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="box-body">
+                <table id="Emprestimos" class="table-striped table table-hover">
+                    @if (Model.Any())
+                    {
+
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Amigo.Nome)
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Data de Empréstimo")
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DataPrevistaDevolucao)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DataDevolucao)
+                                </th>
+                                <th class="text-right">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr data-id="@item.Id">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Amigo.Nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataCadastro)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataPrevistaDevolucao)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataDevolucao)
+                                    </td>
+                                    <td class="text-right">
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-default"><i class="fa fa-search"></i></a>
+                                        @if (item.DataDevolucao != null)
+                                        {
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-default"><i class="fa fa-trash-o"></i></a>
+                                        }
+                                        @if (item.DataDevolucao == null)
+                                        {
+                                            <a onclick="encerrarEmprestimo('@item.Id')" id="btnEncerrar" class="btn btn-default"><i class="fa fa-paper-plane"></i></a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                Nenhum empréstimo encontrado.
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function() {
+            $('#Emprestimos').DataTable({
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json'
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf'
+                ],
+                responsive: true
+            });
+        });
+        function encerrarEmprestimo(emprestimoId) {
+            let token = $('input[name="__RequestVerificationToken"]', $('form')).val();
+            let success = false;
+            swal({
+                title: "Confirmar fim de empréstimo?",
+                text: "Tem certeza que deseja confirmar o término do empréstimo?",
+                type: "question",
+                showCancelButton: true,
+                confirmButtonText: 'Sim.',
+                cancelButtonText: "Não.",
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    return fetch("@Url.Action("EncerrarEmprestimo", "Emprestimos")" + "?id=" + emprestimoId,
+                            {
+                                method: "POST",
+                                headers: {
+                                    '__RequestVerificationToken': token,
+                                    'user-agent': 'Mozilla/4.0 MDN Example',
+                                    'content-type': 'application/json'
+                                },
+                                credentials:'same-origin',
+                                mode:'same-origin'
+                            })
+                        .then(response => {
+                            success = response.status === 200;
+                        })
+                        .catch(error => {
+                            success = false;
+                        });
+                },
+                allowOutsideClick: () => !swal.isLoading(),
+            }).then((result) => {
+                console.log(result);
+                if (result.value) {
+                    if (success) {
+                        swal({
+                            title: 'Sucesso',
+                            text: "Empréstimo encerrado com sucesso. ",
+                            type: 'success',
+                            confirmButtonText: 'OK'
+                        }).then(function() {
+                            location.reload();
+                        });
+                    } else {
+                        swal({
+                            title: 'Erro',
+                            text: 'Houve um erro ao encerrar o empréstimo',
+                            type: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+}

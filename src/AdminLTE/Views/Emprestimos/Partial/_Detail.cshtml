@@ -1,0 +1,57 @@
+﻿@model SGEJ.Models.Entities.Emprestimo
+<table class="table table-bordered table-striped responsive">
+    <tbody>
+        <tr>
+            <td style="width: 200px;">@Html.DisplayNameFor(model => model.Id)</td>
+            <td>@Html.DisplayFor(model => model.Id)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Amigo.Nome)</td>
+            <td>@Html.DisplayFor(model => model.Amigo.Nome)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.DataCadastro)</td>
+            <td>@Html.Raw(Model.DataCadastro.ToString("dd/MM/yyyy HH:mm:ss"))</td>
+        </tr>
+
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.DataPrevistaDevolucao)</td>
+            <td>@Html.DisplayFor(model => model.DataPrevistaDevolucao)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.DataDevolucao)</td>
+            <td>@Html.DisplayFor(model => model.DataDevolucao)</td>
+        </tr>
+    </tbody>
+</table>
+<table title="Jogos Emprestados" class="table table-bordered table-striped responsive">
+    @if (Model.Emprestimos != null)
+    {
+        if (Model.Emprestimos.Count > 0)
+        {
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Emprestimos.FirstOrDefault().Jogo.NomeJogo)</th>
+                    <th>@Html.DisplayNameFor(model => model.Emprestimos.FirstOrDefault().Jogo.AnoLancamento)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emprestimo in Model.Emprestimos)
+                {
+                    <tr>
+                        <td>@emprestimo.Jogo.NomeJogo</td>
+                        <td>@emprestimo.Jogo.AnoLancamento</td>
+                    </tr>
+                }
+            </tbody>
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center">
+                    Não há jogos neste empréstimo.
+                </td>
+            </tr>
+        }
+    }
+</table>

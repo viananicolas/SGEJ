@@ -67,11 +67,16 @@
 </div>
 @section scripts{
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#Amigos').DataTable({
                 language: {
                     url: 'https://cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json'
-                }
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf'
+                ],
+                responsive: true
             });
         });
     </script>

@@ -11,13 +11,14 @@ namespace SGEJ.ViewComponents
     {
         public IViewComponentResult Invoke(string filter)
         {
-            var sidebars = new List<SidebarMenu>
+            var sidebars = new List<SidebarMenu> {ModuleHelper.AddHeader("NAVEGAÇÃO")};
+            if (User.Identity.IsAuthenticated)
             {
-                ModuleHelper.AddHeader("NAVEGAÇÃO"),
-                ModuleHelper.AddModule(ModuleHelper.Module.Jogos, Tuple.Create(0, 0, 0)),
-                ModuleHelper.AddModule(ModuleHelper.Module.Amigos, Tuple.Create(0, 0, 0)),
-                ModuleHelper.AddModule(ModuleHelper.Module.Emprestimos, Tuple.Create(0, 0, 0))
-            };
+                sidebars.Add(ModuleHelper.AddModule(ModuleHelper.Module.Jogos, Tuple.Create(0, 0, 0)));
+                sidebars.Add(ModuleHelper.AddModule(ModuleHelper.Module.Amigos, Tuple.Create(0, 0, 0)));
+                sidebars.Add(ModuleHelper.AddModule(ModuleHelper.Module.Emprestimos, Tuple.Create(0, 0, 0)));
+
+            }
             return View(sidebars);
         }
     }

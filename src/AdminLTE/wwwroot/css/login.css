@@ -8644,16 +8644,16 @@ button.close {
 /* line 53, ../sass/authenty.scss */
 .authenty.signin-main .title {
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 40px;
 }
 /* line 56, ../sass/authenty.scss */
 .authenty.signin-main .title h1 {
   font-size: 40pt;
 }
 /* line 60, ../sass/authenty.scss */
-.authenty.signin-main .wrap {
-  padding-top: 80px;
-}
+  /*.authenty.signin-main .wrap {
+    padding-top: 30px;
+  }*/
 /* line 63, ../sass/authenty.scss */
 .authenty.signin-main .form-wrap {
   width: 100%;
@@ -8714,7 +8714,7 @@ button.close {
 /* line 107, ../sass/authenty.scss */
 .authenty.signin-main .form-main {
   background-color: #505050;
-  padding: 40px 50px;
+  padding: 30px 50px;
 }
 /* line 111, ../sass/authenty.scss */
 .authenty.signin-main .form-footer {

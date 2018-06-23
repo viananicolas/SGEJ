@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SGEJ.Attributes;
 using SGEJ.Models.Context;
 using SGEJ.Models.DependencyInjection;
 using SGEJ.Models.Entities;
@@ -63,7 +64,11 @@ namespace SGEJ
             {
                 options.LoginPath = new PathString("/Account/Login");
             });
-
+            services.AddScoped<ValidateHeaderAntiForgeryTokenAttribute>();
+            services.AddAntiforgery(options =>
+            {
+                options.HeaderName = "X-XSRF-TOKEN";
+            });
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();

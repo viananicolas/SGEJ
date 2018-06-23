@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-    <AssemblyName>AdminLTE</AssemblyName>
+    <AssemblyName>SGEJ</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>AdminLTE</PackageId>
     <UserSecretsId>aspnet-AdminLTE-c9131f1e-93fb-4772-8c8b-1d4c77bf4354</UserSecretsId>

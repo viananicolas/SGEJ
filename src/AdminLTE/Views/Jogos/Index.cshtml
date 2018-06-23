@@ -1,4 +1,6 @@
-﻿@model IEnumerable<SGEJ.Models.Entities.Jogo>
+﻿@using SGEJ.Extensions
+@using SGEJ.Models.Enums
+@model IEnumerable<SGEJ.Models.Entities.Jogo>
 
 <div class="row">
     <div class="col-lg-12">
@@ -20,9 +22,18 @@
                             <tr>
                                 <th>
                                     @Html.DisplayNameFor(model => model.NomeJogo)
-                                </th>                                
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Desenvolvedora)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Distribuidora)
+                                </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.AnoLancamento)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Plataforma)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.DataCadastro)
@@ -36,9 +47,18 @@
                                 <tr data-id="@item.Id">
                                     <td>
                                         @Html.DisplayFor(modelItem => item.NomeJogo)
-                                    </td>                                    
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Desenvolvedora)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Distribuidora)
+                                    </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.AnoLancamento)
+                                    </td>
+                                    <td>
+                                        @Html.Raw(EnumHelper<Plataforma>.GetDisplayValue(item.Plataforma))
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.DataCadastro)
@@ -67,11 +87,16 @@
 </div>
 @section scripts{
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#Jogos').DataTable({
                 language: {
                     url: 'https://cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json'
-                }
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf'
+                ],
+                responsive: true
             });
         });
     </script>

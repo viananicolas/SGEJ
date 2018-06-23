@@ -10,6 +10,8 @@ namespace SGEJ.Models.Entities
         public DateTime DataPrevistaDevolucao { get; set; }
         [Display(Name = "Data de devolução")]
         public DateTime? DataDevolucao { get; set; }
+
+        public Amigo Amigo { get; set; }
         public ICollection<EmprestimoJogo> Emprestimos { get; set; }
     }
 }

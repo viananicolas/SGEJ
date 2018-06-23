@@ -1,0 +1,40 @@
+﻿@model SGEJ.Models.Models.EmprestimosViewModel.CadastroEmprestimoViewModel
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Dados</h3>
+    </div>
+    @if (ViewContext.RouteData.Values["action"].ToString() == "Edit")
+    {
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.DataCadastro)
+    }
+    <div class="box-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label asp-for="Amigo" class=" control-label"></label>
+                @Html.DropDownList("Amigo", null, "Selecione...", new {@class = "form-control"})
+                <span asp-validation-for="Amigo" class="text-danger"></span>
+            </div>
+        </div>  
+        <div class="form-group">
+            <div class="col-md-12">
+                <label asp-for="Jogos" class=" control-label"></label>
+                @Html.ListBox("Jogos", null, new { @class = "form-control", data_placeholder = "Escolha os jogos" })
+                <span asp-validation-for="Jogos" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label asp-for="DataPrevistaDevolucao" class=" control-label"></label>
+                <input asp-for="DataPrevistaDevolucao"  type="datetime-local" class="form-control" />
+                <span asp-validation-for="DataPrevistaDevolucao" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-footer clearfix no-border">
+    <buton class="btn btn-primary" style="background-color: #016ef7; border-color: #016ef7;" onclick="window.history.back();">Voltar</buton>
+    <input type="submit" value="Salvar" class="btn btn-primary" />
+
+</div>

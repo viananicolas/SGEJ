@@ -1,4 +1,4 @@
-﻿@model SGEJ.Models.Entities.Amigo
+﻿@model SGEJ.Models.Models.EmprestimosViewModel.CadastroEmprestimoViewModel
 
 @{
     ViewBag.Title = "Cadastrar";
@@ -15,7 +15,9 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script type="text/javascript">
-        $('#Celular').mask('(00) 00000-0000');
+    <script>
+        $(() => {
+            $("#Jogos").chosen();
+        })
     </script>
 }

@@ -6,14 +6,17 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="@User.GetUserProperty(CustomClaimTypes.AvatarURL)" class="img-circle" alt="ui">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="@User.GetUserProperty(CustomClaimTypes.AvatarURL)" alt="ui">
+                </div>
+                <div class="pull-left info">
+                    <p>@User.GetUserProperty(CustomClaimTypes.GivenName) @User.GetUserProperty(CustomClaimTypes.Surname)</p>
+                </div>
             </div>
-            <div class="pull-left info">
-                <p>@User.GetUserProperty(CustomClaimTypes.GivenName) @User.GetUserProperty(CustomClaimTypes.Surname)</p>
-            </div>
-        </div>
+        }
         <ul class="sidebar-menu">
             @foreach (var menu in Model)
             {

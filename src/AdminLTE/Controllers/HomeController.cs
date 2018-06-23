@@ -3,17 +3,32 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SGEJ.Models.Common.Attributes;
+using SGEJ.Models.Entities;
+using SGEJ.Models.Interface;
 using SGEJ.Models.Models;
 
 namespace SGEJ.Controllers
 {
     public class HomeController : BaseController
     {
+        public HomeController(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+
+        private void InicializaViewData()
+        {
+            ViewData["Emprestimos"] = UnitOfWork.GetRepositoryAsync<Emprestimo>().GetAsync(e => !e.Excluido && e.DataDevolucao == null).Count();
+            ViewData["Atraso"] = UnitOfWork.GetRepositoryAsync<Emprestimo>().GetAsync(e => !e.Excluido && e.DataDevolucao == null && DateTime.Now > e.DataPrevistaDevolucao).Count();
+            ViewData["Jogos"] = UnitOfWork.GetRepositoryAsync<Jogo>().GetAsync(e => !e.Excluido && e.Emprestimos.Any(i => i.Emprestimo.DataDevolucao == null), include: i => i.Include(e => e.Emprestimos)).Count();
+        }
         [HelpDefinition]
         public IActionResult Index()
         {
             AddPageHeader("Dashboard", "");
+            InicializaViewData();
             return View();
         }
 
@@ -21,6 +36,7 @@ namespace SGEJ.Controllers
         public IActionResult Index(object model)
         {
             AddPageAlerts(PageAlertType.Info, "you may view the summary <a href='#'>here</a>");
+            InicializaViewData();
             return View("Index");
         }
 
